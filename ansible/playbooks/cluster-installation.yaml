@@ -70,3 +70,27 @@
       ansible.builtin.include_tasks: tasks/stale_containers.yaml
       vars:
         stale_containers_state: enabled
+
+    # https://github.com/onedr0p/flux-cluster-template/discussions/635
+    - name: Fix DNS for Ubuntu
+      block:
+        - name: Stop and disable service which messes with DNS
+          service:
+            name: "systemd-resolved"
+            state: stopped
+            enabled: false
+        - name: Delete link to the systemd-resolved resolv.conf
+          ansible.builtin.file:
+            path: /etc/resolv.conf
+            state: absent
+        - name: Create empty resolv.conf
+          ansible.builtin.file:
+            path: /etc/resolv.conf
+            state: touch
+        - name: Setup nameserver
+          blockinfile:
+            dest: /etc/resolv.conf
+            block: |
+              nameserver {{ dns_server_1 | default('1.1.1.1') }}
+              nameserver {{ dns_server_2 | default('1.0.0.1') }}
+      when: ansible_facts['distribution'] == 'Ubuntu'
