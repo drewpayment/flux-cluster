@@ -17,9 +17,9 @@ kubernetes:
         kube-worker-msi-1:
           ansible_user: mint
           ansible_host: 192.168.86.202
-        kube-worker-msi-2:
+        kube-worker-dell-1:
           ansible_user: mint
           ansible_host: 192.168.86.203
-        kube-worker-dell-1:
+        kube-worker-msi-2:
           ansible_user: mint
           ansible_host: 192.168.86.205
