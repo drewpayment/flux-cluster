@@ -1,0 +1,96 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mysql
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    controller:
+      replicas: 1
+
+    image:
+      registry: docker.io
+      repository: bitnami/mysql
+      tag: 8.0.34-debian-11-r8
+      pullPolicy: IfNotPresent
+      
+    auth:
+      createDatabase: true
+      database: "choice"
+
+    env:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "choice"
+      MYSQL_USER: "drew"
+      MYSQL_PASSWORD: "p@ssword1"
+
+    service:
+      main:
+        ports:
+          mysql:
+            port: &port 3306
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+          hajimari.io/icon: database
+        hosts:
+          - host: &host "mysql.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          exec:
+            command: ["mysqladmin", "ping", "-h", "localhost"]
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 1
+        memory: 1Gi
+
+    volumeMounts:
+      - name: mysql-storage
+        mountPath: /var/lib/mysql
+
+    volumes:
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
