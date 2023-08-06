@@ -81,9 +81,13 @@ spec:
         type: nfs
         server: 192.168.86.44
         path: /mnt/tank/db
-        accessMode: ReadWriteMany
+        accessMode: ReadWriteOnce
         size: 500Mi
         mountPath: /config
+        storageClass: nfs
+        
+    storageClass: 
+      name: nfs
         
     # persistence:
     #   config:
