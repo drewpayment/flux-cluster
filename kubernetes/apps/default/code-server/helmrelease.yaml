@@ -75,22 +75,22 @@ spec:
           - hosts:
               - *host
             secretName: ${SECRET_DOMAIN//./-}-tls
-    persistence:
-      config:
-        enabled: true
-        type: nfs
-        server: 192.168.86.44
-        path: /mnt/tank/db
-        accessMode: ReadWriteOnce
-        size: 500Mi
-        mountPath: /config
-        
     # persistence:
     #   config:
     #     enabled: true
-    #     type: pvc
+    #     type: nfs
+    #     server: 192.168.86.44
+    #     path: /mnt/tank/db
     #     accessMode: ReadWriteOnce
-    #     size: 5Gi
+    #     size: 500Mi
     #     mountPath: /config
-    #     storageClass: local-path
+        
+    persistence:
+      config:
+        enabled: true
+        type: pvc
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        mountPath: /config
+        storageClass: local-path
 # docker run --entrypoint /bin/sleep docker.io/fluxcd/flux-cli:v0.37.0 inf
