@@ -5,4 +5,4 @@ resources:
   - ./namespace.yaml
   - ./hajimari/ks.yaml
   - ./libreddit
-  - ./code-server
+  - ./code-server/ks.yaml
