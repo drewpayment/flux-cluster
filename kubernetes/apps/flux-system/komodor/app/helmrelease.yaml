@@ -25,11 +25,8 @@ spec:
         namespace: flux-system
       version: '*' # Use specific chart version if needed, otherwise it picks the latest
   values:
-    apiKey:
-      valueFrom:
-        secretKeyRef:
-          name: komodor-secret
-          key: apiKey
+    secretRef:
+      name: komodor-secret
     watcher:
       clusterName: default
   timeout: 90s
