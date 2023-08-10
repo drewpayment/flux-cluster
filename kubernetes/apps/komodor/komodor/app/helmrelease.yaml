@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: k8s-watcher
+  name: komodor
   namespace: komodor
 spec:
   interval: 1m
@@ -22,11 +22,10 @@ spec:
       enableAgentTaskExecution: true
       enableAgentTaskExecutionV2: true
       enableHelm: true
+      namespace: monitoring
     helm:
       enableActions: true
   timeout: 90s
-  install:
-    createNamespace: true # This will create namespace if not present
   upgrade:
     remediation:
       retries: 2 # This is optional and represents how many times Helm should retry installing/upgrading
