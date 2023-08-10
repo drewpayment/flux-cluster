@@ -28,8 +28,6 @@ spec:
   - secretRef:
     name: komodor-secret
   values:
-    secretRef:
-      name: komodor-secret
     watcher:
       clusterName: default
       enableAgentTaskExecution: true
