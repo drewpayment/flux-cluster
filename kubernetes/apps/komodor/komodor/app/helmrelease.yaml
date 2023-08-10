@@ -5,16 +5,28 @@ metadata:
   name: komodor
   namespace: komodor
 spec:
-  interval: 1m
+  interval: 30m
   chart:
     spec:
       chart: k8s-watcher
+      version: "1.3.3"
       sourceRef:
         kind: HelmRepository
         name: komodorio
         namespace: flux-system
-      version: '1.3.3' # Use specific chart version if needed, otherwise it picks the latest
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
+    createNamespace: false
     existingSecret: komodor-secret
     watcher:
       clusterName: home
@@ -25,7 +37,3 @@ spec:
       namespace: monitoring
     helm:
       enableActions: true
-  timeout: 90s
-  upgrade:
-    remediation:
-      retries: 2 # This is optional and represents how many times Helm should retry installing/upgrading
