@@ -24,10 +24,9 @@ spec:
         name: komodorio
         namespace: flux-system
       version: '*' # Use specific chart version if needed, otherwise it picks the latest
-  valuesFrom:
-  - secretRef:
-    name: komodor-secret
   values:
+    secretRef:
+      name: komodor-secret
     watcher:
       clusterName: default
       enableAgentTaskExecution: true
