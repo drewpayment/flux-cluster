@@ -29,6 +29,8 @@ spec:
       name: komodor-secret
     watcher:
       clusterName: default
+      enableAgentTaskExecution: true
+      allowReadingPodLogs: true
   timeout: 90s
   install:
     createNamespace: true # This will create namespace if not present
