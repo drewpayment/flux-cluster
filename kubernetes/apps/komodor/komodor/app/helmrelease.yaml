@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: komodorio
         namespace: flux-system
-      version: '*' # Use specific chart version if needed, otherwise it picks the latest
+      version: '1.3.3' # Use specific chart version if needed, otherwise it picks the latest
   values:
     existingSecret: komodor-secret
     watcher:
