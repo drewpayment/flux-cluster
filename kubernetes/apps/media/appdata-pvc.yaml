@@ -7,7 +7,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: nfs-drew
+  storageClassName: nfs-db
   resources:
     requests:
       storage: 100G
