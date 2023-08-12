@@ -60,7 +60,7 @@ spec:
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/icon: movie-open-check
         hosts:
-          - host: &host request.${PUBLIC_DOMAIN}
+          - host: &host request.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
