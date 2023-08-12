@@ -1,5 +1,19 @@
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: appdata-media
+spec:
+  capacity:
+    storage: 100G
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: nfs-drew
+  hostPath:
+    path: "/appdata"
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: appdata
