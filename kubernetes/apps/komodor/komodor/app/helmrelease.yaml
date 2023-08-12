@@ -35,6 +35,8 @@ spec:
       enableAgentTaskExecutionV2: true
       enableHelm: true
       namespace: monitoring
+      metrics:
+        enabled: true
       actions:
         basic: true
         advanced: true

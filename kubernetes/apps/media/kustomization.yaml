@@ -5,4 +5,4 @@ resources:
   - ./namespace.yaml
   - ./appdata-pvc.yaml
   - ./overseerr/ks.yaml
-  - ./openbooks/ks.yaml
+  # - ./openbooks/ks.yaml
