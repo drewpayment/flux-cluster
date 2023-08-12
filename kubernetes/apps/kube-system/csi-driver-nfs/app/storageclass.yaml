@@ -9,4 +9,4 @@ parameters:
   share: /mnt/tank/drew
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
-mountOptions: ["hard", "noatime"]
+# mountOptions: ["hard", "noatime"]
