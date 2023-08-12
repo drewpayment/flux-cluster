@@ -61,6 +61,7 @@ spec:
         annotations:
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/icon: book-search
+          hajimari.io/icon: ion:book
         hosts:
           - host: &host openbooks.${SECRET_DOMAIN}
             paths:
