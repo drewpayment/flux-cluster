@@ -35,5 +35,10 @@ spec:
       enableAgentTaskExecutionV2: true
       enableHelm: true
       namespace: monitoring
+      actions:
+        basic: true
+        advanced: true
+        podExec: true
+        portforward: true
     helm:
       enableActions: true
