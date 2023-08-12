@@ -19,3 +19,5 @@ resources:
   - ./stakater.yaml
   - ./weave-gitops.yaml
   - ./komodorio.yaml
+  - ./fairwinds.yaml
+  - ./kyverno.yaml
