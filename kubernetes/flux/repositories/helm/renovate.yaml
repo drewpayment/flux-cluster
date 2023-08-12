@@ -5,6 +5,6 @@ metadata:
   name: renovate-charts
   namespace: flux-system
 spec:
-  interval: 2h
+  interval: 1h
   url: https://docs.renovatebot.com/helm-charts
   timeout: 3m

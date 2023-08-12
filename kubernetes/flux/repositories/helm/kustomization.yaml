@@ -19,3 +19,4 @@ resources:
   - ./stakater.yaml
   - ./weave-gitops.yaml
   - ./komodorio.yaml
+  - ./renovate.yaml
