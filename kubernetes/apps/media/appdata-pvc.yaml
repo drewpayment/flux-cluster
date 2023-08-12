@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: nfs-drew
   hostPath:
-    path: "/appdata"
+    path: "/mnt/tank/drew"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
