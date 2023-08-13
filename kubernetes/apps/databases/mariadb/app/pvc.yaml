@@ -5,6 +5,7 @@ metadata:
   name: mariadb-data-volume
   namespace: databases
 spec:
+  reclaimPolicy: Retain
   accessModes:
     - ReadWriteMany
   storageClassName: nfs-db
