@@ -9,4 +9,3 @@ parameters:
   share: /mnt/tank/db
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
-# mountOptions: ["hard", "noatime"]
