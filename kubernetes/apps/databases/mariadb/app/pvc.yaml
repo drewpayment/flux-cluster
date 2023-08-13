@@ -1,13 +1,25 @@
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: maria-data-pv
+spec:
+  capacity:
+    storage: 100G
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-db
+
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mariadb-data-volume
   namespace: databases
 spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: nfs-db
+  storageClassName: maria-data-pv
   resources:
     requests:
       storage: 100G

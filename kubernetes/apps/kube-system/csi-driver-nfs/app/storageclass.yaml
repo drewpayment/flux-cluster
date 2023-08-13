@@ -7,5 +7,5 @@ provisioner: nfs.csi.k8s.io
 parameters:
   server: 192.168.86.44
   share: /mnt/tank/db
-reclaimPolicy: Retain
+reclaimPolicy: Delete
 volumeBindingMode: Immediate
