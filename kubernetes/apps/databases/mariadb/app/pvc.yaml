@@ -6,11 +6,13 @@ metadata:
 spec:
   capacity:
     storage: 100G
-  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
+  nfs:
+    server: 192.168.86.44
+    path: '/mnt/tank/db'
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs-db
+
 
 ---
 apiVersion: v1
@@ -19,7 +21,10 @@ metadata:
   name: mariadb-data-volume
   namespace: databases
 spec:
-  storageClassName: maria-data-pv
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  volumeName: maria-data-pv
   resources:
     requests:
       storage: 100G
