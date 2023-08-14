@@ -36,7 +36,7 @@ spec:
         existingClaim: mariadb-data-volume
       service:
         type: LoadBalancer
-        loadBalancerIP: ${SVC_MARIADB_PRIMARY_ADDR}
+        loadBalancerIP: 192.168.86.206
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
@@ -46,7 +46,7 @@ spec:
         existingClaim: mariadb-data-volume
       service:
         type: LoadBalancer
-        loadBalancerIP: ${SVC_MARIADB_SECONDARY_ADDR}
+        loadBalancerIP: 192.168.86.207
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
