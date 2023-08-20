@@ -39,18 +39,17 @@ spec:
           http:
             port: 3000
     ingress:
-      main:
-        enabled: true
-        ingressClassName: internal
-        annotations:
-          hajimari.io/appName: Choice Web
-          hajimari.io/icon: heroicons:photo
-        hosts:
-          - host: &host cmp.${SECRET_DOMAIN}
-            paths:
-              - prefix: /
-                pathType: prefix
-        tls:
-          - hosts:
-              - *host
+      enabled: true
+      ingressClassName: internal
+      annotations:
+        hajimari.io/appName: Choice Web
+        hajimari.io/icon: heroicons:photo
+      hosts:
+        - host: &host cmp.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: prefix
+      tls:
+        - hosts:
+            - *host
 
