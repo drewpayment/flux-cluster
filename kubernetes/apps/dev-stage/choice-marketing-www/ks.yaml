@@ -5,7 +5,7 @@ metadata:
   name: choice-marketing-www
   namespace: dev-stage
 spec:
-  path: ./kubernetes/apps/stage/choice-marketing-www/app
+  path: ./kubernetes/apps/dev-stage/choice-marketing-www/app
   prune: true
   sourceRef:
     kind: GitRepository
