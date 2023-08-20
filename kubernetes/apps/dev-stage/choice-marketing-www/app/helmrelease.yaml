@@ -35,6 +35,8 @@ spec:
     image:
       repository: ghcr.io/drewpayment/current-www
       tag: 0.0.4
+    imagePullSecrets:
+      - name: docker-registry
     service:
       main:
         ports:
