@@ -28,6 +28,8 @@ spec:
   # dependsOn:
   #   - name: choice-marketing-api
   values:
+    env:
+      existingSecret: choice-marketing-www-secret
     controller:
       replicas: 2
     image:
