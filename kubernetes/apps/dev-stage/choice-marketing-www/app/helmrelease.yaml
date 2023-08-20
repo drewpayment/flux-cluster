@@ -30,13 +30,9 @@ spec:
   values:
     controller:
       replicas: 2
-      strategy: RollingUpdate
-    annotations:
-      reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/drewpayment/current-www
       tag: 0.0.4
-    command: "pnpm www:serve"
     service:
       main:
         ports:
@@ -57,8 +53,4 @@ spec:
         tls:
           - hosts:
               - *host
-    resources:
-      requests:
-        cpu: 200m
-        memory: 350Mi
 
