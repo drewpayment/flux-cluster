@@ -31,12 +31,12 @@ spec:
     controller:
       replicas: 2
       strategy: RollingUpdate
-      annotations:
-        reloader.stakater.com/auto: "true"
-      image:
-        repository: ghcr.io/drewpayment/current-www
-        tag: 0.0.4
-      command: "pnpm www:serve"
+    annotations:
+      reloader.stakater.com/auto: "true"
+    image:
+      repository: ghcr.io/drewpayment/current-www
+      tag: 0.0.4
+    command: "pnpm www:serve"
     service:
       main:
         ports:
