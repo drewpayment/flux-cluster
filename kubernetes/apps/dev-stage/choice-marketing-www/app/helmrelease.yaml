@@ -28,15 +28,13 @@ spec:
   # dependsOn:
   #   - name: choice-marketing-api
   values:
-    env:
-      existingSecret: choice-marketing-www-secret
     controller:
       replicas: 2
     image:
       repository: ghcr.io/drewpayment/current-www
       tag: 0.0.4
     imagePullSecrets:
-      - name: docker-registry
+      - name: choice-marketing-www-secret
     service:
       main:
         ports:
