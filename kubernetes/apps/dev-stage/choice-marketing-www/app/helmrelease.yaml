@@ -32,7 +32,10 @@ spec:
       replicas: 2
     image:
       repository: ghcr.io/drewpayment/current-www
+      pullPolicy: IfNotPresent
       tag: 0.0.4
+    strategy:
+      type: Recreate
     imagePullSecrets:
       - name: choice-marketing-www-secret
     service:
@@ -54,6 +57,8 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  port: http
         tls:
           - hosts:
               - *host
