@@ -63,7 +63,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
-          hajimari.io/icon: video-input-antenna
+          hajimari.io/icon: file-code
         hosts:
           - host: &host code.${SECRET_DOMAIN}
             paths:
