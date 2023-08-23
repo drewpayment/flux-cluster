@@ -42,7 +42,7 @@ spec:
       DOCKER_MODS: linuxserver/mods:universal-git|linuxserver/mods:code-server-shellcheck|linuxserver/mods:code-server-terraform
       DEFAULT_WORKSPACE: /config/workspace
       # DOCKER_MODS: "linuxserver/mods:code-server-docker|linuxserver/mods:code-server-python3|linuxserver/mods:code-server-shellcheck|linuxserver/mods:code-server-terraform|linuxserver/mods:universal-git|linuxserver/mods:universal-tshoot|linuxserver/mods:universal-package-install"
-      # INSTALL_PACKAGES: "rsync|git|nginx"
+      INSTALL_PACKAGES: "rsync|git|nginx"
       # INSTALL_PIP_PACKAGES: "apprise"
     service:
       main:
@@ -59,11 +59,11 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: nginx
         annotations:
-          kubernetes.io/ingress.class: nginx
-          traefik.ingress.kubernetes.io/router.tls: "true"
-          # external-dns/is-public: "true"
-          # external-dns.alpha.kubernetes.io/target: ${SECRET_DNS_TARGET}
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+          hajimari.io/icon: video-input-antenna
         hosts:
           - host: &host code.${SECRET_DOMAIN}
             paths:
@@ -74,7 +74,6 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: ${SECRET_DOMAIN//./-}-tls
     # persistence:
     #   config:
     #     enabled: true
@@ -85,10 +84,10 @@ spec:
     #     size: 500Mi
     #     mountPath: /config
     #     storageClass: nfs
-        
-    # storageClass: 
+
+    # storageClass:
     #   name: nfs
-        
+
     persistence:
       config:
         enabled: true
