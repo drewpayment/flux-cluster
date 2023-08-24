@@ -31,7 +31,7 @@ spec:
   values:
     hajimari:
       title: Apps
-      darkTheme: espresso
+      darkTheme: chalk
       alwaysTargetBlank: true
       showGreeting: false
       showAppGroups: false
@@ -40,6 +40,13 @@ spec:
       showGlobalBookmarks: false
       showAppUrls: false
       defaultEnable: true
+      bookmarks:
+        - group: ''
+          bookmarks:
+            - name: Spotify
+              icon: simple-icons:spotify
+              url: https://open.spotify.com
+              targetBlank: false
       namespaceSelector:
         matchNames:
           - default
