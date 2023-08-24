@@ -44,19 +44,20 @@ spec:
     #       http:
     #         port: 3000
     ingress:
-      enabled: true
-      ingressClassName: nginx
-      annotations:
-        hajimari.io/appName: Choice Web
-        hajimari.io/icon: heroicons:photo
-        external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-        external-dns.home.arpa/enabled: "true"
-      hosts:
-        - host: &host cmp.${SECRET_DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - hosts:
-            - *host
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          hajimari.io/appName: Choice Web
+          hajimari.io/icon: heroicons:photo
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host cmp.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
 
