@@ -33,7 +33,7 @@ spec:
     image:
       repository: ghcr.io/drewpayment/current-www
       pullPolicy: IfNotPresent
-      tag: 0.0.4
+      tag: 0.0.5
     strategy:
       type: Recreate
     imagePullSecrets:
@@ -42,7 +42,7 @@ spec:
       main:
         ports:
           http:
-            port: 3000
+            port: 80
     ingress:
       main:
         enabled: true
@@ -58,7 +58,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  port: 3000
+                  port: 80
         tls:
           - hosts:
               - *host
