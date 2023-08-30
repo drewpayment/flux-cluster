@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: choice-marketing-www-service
+  namespace: dev-stage
 spec:
   selector:
     app: choice-marketing-www-app
