@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: choice-marketing-www
+spec:
+  selector:
+    matchLabels:
+      app: choice-marketing-www
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: choice-marketing-www
+    spec:
+      containers:
+        - name: choice-marketing-www-app
+          image: ghcr.io/drewpayment/current-www:0.0.5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
