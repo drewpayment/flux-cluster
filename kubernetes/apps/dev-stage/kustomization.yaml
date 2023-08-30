@@ -3,6 +3,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
-  # - ./choice-marketing-www/ks.yaml
-  - ./choice-marketing-www/deployment.yaml
-  - ./choice-marketing-www/service.yaml
+  - ./choice-marketing-www/ks.yaml
+  # - ./choice-marketing-www/deployment.yaml
+  # - ./choice-marketing-www/service.yaml
