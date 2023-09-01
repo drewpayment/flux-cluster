@@ -42,6 +42,7 @@ spec:
       HOST: 0.0.0.0
       API_PORT: 3000
       DATABASE_URL: mysql://root:password1@192.168.86.206:3306/test
+      NODE_ENV: production
     service:
       main:
         ports:
