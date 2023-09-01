@@ -1,0 +1,65 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: choice-marketing-api
+  namespace: dev-stage
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  # dependsOn:
+  #   - name: choice-marketing-api
+  values:
+    controller:
+      replicas: 1
+    image:
+      repository: ghcr.io/drewpayment/current-api
+      pullPolicy: IfNotPresent
+      tag: 0.0.9
+    strategy:
+      type: Recreate
+    imagePullSecrets:
+      - name: choice-marketing-api-secret
+    service:
+      main:
+        ports:
+          http:
+            port: 80
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          hajimari.io/appName: Choice API
+          hajimari.io/icon: heroicons:photo
+          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host cmp-api.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: 80
+        tls:
+          - hosts:
+              - *host
+
