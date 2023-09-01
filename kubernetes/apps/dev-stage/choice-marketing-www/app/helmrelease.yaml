@@ -38,6 +38,8 @@ spec:
       type: Recreate
     imagePullSecrets:
       - name: choice-marketing-www-secret
+    env:
+      API_URL: https://cmp-api.${SECRET_DOMAIN}
     service:
       main:
         ports:
