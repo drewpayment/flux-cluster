@@ -33,11 +33,15 @@ spec:
     image:
       repository: ghcr.io/drewpayment/current-api
       pullPolicy: IfNotPresent
-      tag: 0.0.9
+      tag: 0.0.12
     strategy:
       type: Recreate
     imagePullSecrets:
       - name: choice-marketing-api-secret
+    env:
+      HOST: 0.0.0.0
+      API_PORT: 3000
+      DATABASE_URL: mysql://root:password1@192.168.86.206:3306/test
     service:
       main:
         ports:
