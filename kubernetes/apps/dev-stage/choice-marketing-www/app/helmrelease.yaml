@@ -53,7 +53,7 @@ spec:
           hajimari.io/appName: Choice Web
           hajimari.io/icon: heroicons:photo
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-          external-dns.home.arpa/enabled: "true"
+          external-dns.home.arpa/enabled: false
         hosts:
           - host: &host cmp.${SECRET_DOMAIN}
             paths:
