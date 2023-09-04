@@ -33,7 +33,7 @@ spec:
     image:
       repository: ghcr.io/drewpayment/current-www
       pullPolicy: IfNotPresent
-      tag: 0.0.21
+      tag: 0.0.22
     strategy:
       type: Recreate
     imagePullSecrets:
@@ -53,7 +53,7 @@ spec:
           hajimari.io/appName: Choice Web
           hajimari.io/icon: heroicons:photo
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-          external-dns.home.arpa/enabled: "false"
+          external-dns.home.arpa/enabled: "true"
         hosts:
           - host: &host cmp.${SECRET_DOMAIN}
             paths:
