@@ -33,7 +33,7 @@ spec:
     image:
       repository: ghcr.io/drewpayment/current-api
       pullPolicy: IfNotPresent
-      tag: 0.0.36
+      tag: 0.0.38
     strategy:
       type: Recreate
     imagePullSecrets:
