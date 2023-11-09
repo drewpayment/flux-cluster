@@ -66,12 +66,13 @@ spec:
       fsGroupChangePolicy: OnRootMismatch
 
     persistence:
-      config:
-        enabled: true
-        existingClaim: appdata
-        mountPath: /server/volume
-        subPath: scrypted
       cache:
         enabled: true
         mountPath: /.npm
         type: emptyDir
+    volumeClaimTemplates:
+      - name: config
+        mountPath: /server/volume
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: local-path
