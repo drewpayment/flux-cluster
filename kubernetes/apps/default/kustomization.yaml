@@ -6,3 +6,5 @@ resources:
   - ./hajimari/ks.yaml
   - ./libreddit
   - ./code-server
+  - ./appdata-pvc.yaml
+  - ./scrypted/ks.yaml
