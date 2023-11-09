@@ -35,7 +35,7 @@ spec:
       type: statefulset
     image:
       repository: ghcr.io/koush/scrypted
-      tag: 18-bullseye-full-v0.23.0
+      tag: 20-jammy-thin.s6-v0.57.0
     env:
       TZ: America/New_York
     service:
