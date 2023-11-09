@@ -10,4 +10,4 @@ spec:
   storageClassName: nfs-db
   resources:
     requests:
-      storage: 100G
+      storage: 10G
