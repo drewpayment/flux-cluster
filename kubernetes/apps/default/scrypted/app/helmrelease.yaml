@@ -74,5 +74,5 @@ spec:
       - name: config
         mountPath: /server/volume
         accessMode: ReadWriteOnce
-        size: 10Gi
+        size: 100Gi
         storageClass: local-path
